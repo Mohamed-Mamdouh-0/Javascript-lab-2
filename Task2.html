@@ -1,0 +1,28 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input id="input" />
+		<button onclick="getLargestWord(document.getElementById('input').value)">
+			submit
+		</button>
+
+		<hr />
+		<p>Output is: <span style="padding-left: 10px" id="resultID"></span></p>
+		<script>
+			const getLargestWord = (sentence) => {
+				let changeSentenceToString = toString(sentence);
+				let arr = sentence.split(' ');
+				let result = arr[0];
+				arr.map((i) => {
+					i.length > result.length ? (result = i) : null;
+				});
+				document.getElementById('resultID').textContent = result;
+			};
+		</script>
+	</body>
+</html>

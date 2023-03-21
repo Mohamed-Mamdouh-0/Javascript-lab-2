@@ -1,0 +1,90 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<h2>Entering your info</h2>
+		<hr />
+		<p>
+			<span class="blue-text">Welcome Dear guest</span
+			><span id="guest-name"></span>
+		</p>
+		<p>
+			<span class="blue-text">Your Telephone number is </span
+			><span id="guest-phone"></span>
+		</p>
+		<p>
+			<span class="blue-text">your mobile number is </span
+			><span id="guest-mobile"></span>
+		</p>
+		<p>
+			<span class="blue-text">your email address is</span
+			><span id="guest-email"></span>
+		</p>
+		<br />
+		<p><span class="blue-text">today is</span><span id="date-day"></span></p>
+		<p>
+			<span class="blue-text">we are in month</span
+			><span id="date-month"></span>
+		</p>
+		<h5>what color scheme would you prefer</h5>
+		<div>
+			<button onclick="changeColor('blue')">Blue</button>
+			<button onclick="changeColor('green')">Green</button>
+			<button onclick="changeColor('red')">Red</button>
+		</div>
+		<script>
+			let newDate = new Date();
+			document.getElementById('date-day').textContent = newDate.getDay() + 1;
+			document.getElementById('date-month').textContent =
+				newDate.getMonth() + 1;
+
+			let fname;
+			do {
+				fname = prompt('enter your name');
+				// console.log(/\d/.test(fname));
+			} while (!/\d/.test(fname) && fname === '');
+			let phoneNum;
+			do {
+				phoneNum = prompt('enter your phone number');
+				// console.log(/[0-9]/.test(phoneNum) && phoneNum.length !== 8);
+				// console.log(/[0-9]/.test(phoneNum));
+				// console.log(phoneNum.length);
+			} while (!/[0-9]{8}/.test(phoneNum));
+			let mobileNum;
+			do {
+				mobileNum = prompt('enter your mobile number');
+				// console.log(
+				// 	/^01[012][0-9]{11}$/.test(mobileNum) && mobileNum.length !== 11
+				// );
+				console.log(/^01[012][0-9]{8}$/.test(mobileNum));
+				// console.log(mobileNum.length);
+			} while (!/^01[012][0-9]{8}$/.test(mobileNum));
+			let guestEmail;
+			let emailRegex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
+			do {
+				guestEmail = prompt('enter your email');
+				// console.log(emailRegex.test(guestEmail) && guestEmail.length !== 11);
+				// console.log(emailRegex.test(guestEmail));
+				// console.log(guestEmail.length);
+			} while (!emailRegex.test(guestEmail));
+
+			document.getElementById('guest-name').textContent = fname;
+			document.getElementById('guest-phone').textContent = phoneNum;
+			document.getElementById('guest-mobile').textContent = mobileNum;
+			document.getElementById('guest-email').textContent = guestEmail;
+
+			const changeColor = (desiredColor) => {
+				let items = document.getElementsByClassName('blue-text');
+				for (let i = 0; i < items.length; i++) {
+					items[i].style.color = desiredColor;
+				}
+				// items.map((i) => (i.style.color = desiredColor));
+			};
+		</script>
+	</body>
+</html>

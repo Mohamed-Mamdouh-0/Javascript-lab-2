@@ -1,0 +1,75 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Sorting</h1>
+		<hr />
+		<input id="input1" type="number" />
+		<input id="input2" type="number" />
+		<input id="input3" type="number" />
+		<input id="input4" type="number" />
+		<input id="input5" type="number" />
+		<button onclick="reorderNumberFn()">submit</button>
+
+		<hr />
+		<p style="color: red">
+			u've entered the values of
+			<span style="padding-left: 5px; color: black" id="unorderedArr"></span>
+		</p>
+		<p style="color: red">
+			ur values after being sorted descending
+			<span style="padding-left: 5px; color: black" id="descendingArr"></span>
+		</p>
+		<p style="color: red">
+			ur values after being sorted ascending
+			<span style="padding-left: 5px; color: black" id="ascendingArr"></span>
+		</p>
+		<script>
+			const reorderNumberFn = () => {
+				document.getElementById('ascendingArr').textContent = '';
+				document.getElementById('unorderedArr').textContent = '';
+				document.getElementById('descendingArr').textContent = '';
+
+				let newArr = [];
+				let iteration = 1;
+				while (iteration < 6) {
+					document.getElementById(`input${iteration}`).value === ''
+						? null
+						: newArr.push(document.getElementById(`input${iteration}`).value);
+
+					iteration++;
+				}
+
+				newArr.map((i, index) => {
+					document.getElementById('unorderedArr').textContent +=
+						i + (index + 1 < newArr.length ? ' ,' : '');
+				});
+				newArr
+					.sort((a, b) => {
+						return a - b;
+					})
+					.map((i, index) => {
+						document.getElementById('ascendingArr').textContent +=
+							i + (index + 1 < newArr.length ? ' ,' : '');
+					});
+				console.log(
+					newArr.sort((a, b) => {
+						return b - a;
+					})
+				);
+				newArr
+					.sort((a, b) => {
+						return b - a;
+					})
+					.map((i, index) => {
+						document.getElementById('descendingArr').textContent +=
+							i + (index + 1 < newArr.length ? ' ,' : '');
+					});
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,63 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<p>what is the value of your circle's radius</p>
+		<input id="input-radius" type="number" />
+		<button onclick="calculateArea()">submit</button>
+		<p>
+			Total area of the circle is<span
+				id="input-radius-result"
+				style="padding-left: 5px"></span>
+		</p>
+		<hr />
+		<p>what is the value you want to calculate its square root</p>
+		<input id="input-squareroot" type="number" style="margin-top: 2px" />
+		<button onclick="calculateSquareRoot()">submit</button>
+		<p>
+			square root of
+			<span id="input-squareroot-value" style="padding-left: 5px"></span> is
+			<span id="input-squareroot-result" style="padding-left: 5px"></span>
+		</p>
+		<hr />
+		<p>enter an angle to calculate its cos value</p>
+		<input id="input-cos" type="number" />
+		<button onclick="calculateCos()">submit</button>
+		<p>
+			cos<span id="input-cos-value" style="padding-left: 5px"></span> &#176;
+			is<span id="input-cos-result" style="padding-left: 5px"></span>
+		</p>
+
+		<hr />
+
+		<script>
+			const calculateArea = () => {
+				let radiusValue = document.getElementById('input-radius').value;
+				if (!radiusValue) return;
+
+				document.getElementById('input-radius-result').textContent =
+					radiusValue ** 2 * Math.PI;
+			};
+			const calculateSquareRoot = () => {
+				let squareRootValue = document.getElementById('input-squareroot').value;
+				if (!squareRootValue) return;
+				document.getElementById('input-squareroot-value').textContent =
+					squareRootValue;
+				document.getElementById('input-squareroot-result').textContent =
+					Math.sqrt(squareRootValue);
+			};
+			const calculateCos = () => {
+				let cosAngleValue = document.getElementById('input-cos').value;
+				if (!cosAngleValue) return;
+				document.getElementById('input-cos-value').textContent = cosAngleValue;
+				document.getElementById('input-cos-result').textContent = Math.cos(
+					cosAngleValue * (Math.PI / 180)
+				).toFixed(4);
+			};
+		</script>
+	</body>
+</html>
